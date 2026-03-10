@@ -77,7 +77,7 @@ function VideoCard({ video, index }: { video: (typeof videos)[0]; index: number 
 
 export default function ContentSection() {
   return (
-    <section id="content" className="relative py-28 overflow-hidden">
+    <section id="content" className="relative py-16 md:py-28 overflow-hidden">
       {/* Grid bg */}
       <div
         className="absolute inset-0"
@@ -90,7 +90,7 @@ export default function ContentSection() {
         }}
       />
 
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -99,7 +99,7 @@ export default function ContentSection() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">13 / Content</span>
+          <span className="section-label">08 / Content</span>
         </motion.div>
 
         {/* Header card */}

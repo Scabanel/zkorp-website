@@ -94,7 +94,8 @@ function StatusBar() {
     <div
       style={{
         display: "flex",
-        gap: "1.5rem",
+        flexWrap: "wrap",
+        gap: "0.5rem 1.25rem",
         padding: "6px 0",
         borderTop: "1px solid rgba(255,255,255,0.06)",
         marginTop: "auto",
@@ -192,12 +193,6 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
               {project.client}
             </p>
           </div>
-          <span
-            className="section-label"
-            style={{ color: "#333", fontSize: "0.82rem", flexShrink: 0 }}
-          >
-            {project.id} / 14
-          </span>
         </div>
 
         {/* Tagline */}
@@ -256,7 +251,7 @@ export default function WorkProjects() {
   return (
     <section
       id="work"
-      className="relative py-28 overflow-hidden"
+      className="relative py-16 md:py-28 overflow-hidden"
     >
       {/* Grid */}
       <div
@@ -270,10 +265,10 @@ export default function WorkProjects() {
         }}
       />
 
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         {/* Label */}
         <div style={{ marginBottom: "1rem" }}>
-          <span className="section-label">06-11 / Work Projects</span>
+          <span className="section-label">06 / Work Projects</span>
         </div>
 
         {/* Section title */}

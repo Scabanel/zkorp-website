@@ -26,7 +26,7 @@ export default function BlogPage() {
             style={{ background: "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(155,143,212,0.08) 0%, transparent 70%)" }}
           />
 
-          <div className="relative z-10 w-[70%] mx-auto">
+          <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export default function BlogPage() {
 
         {/* Posts grid */}
         <section className="relative py-20">
-          <div className="w-[70%] mx-auto">
+          <div className="w-[90%] lg:w-[70%] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogPosts.map((post, i) => (
                 <motion.div

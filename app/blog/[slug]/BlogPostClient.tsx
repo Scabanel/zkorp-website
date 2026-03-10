@@ -205,7 +205,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
             }}
           />
 
-          <div className="relative z-10 w-[70%] mx-auto">
+          <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -258,7 +258,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
         {/* Cover image */}
         {post.coverImage && (
           <div style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-            <div className="w-[70%] mx-auto pt-8">
+            <div className="w-[90%] lg:w-[70%] mx-auto pt-8">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -283,7 +283,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="w-[70%] mx-auto"
+            className="w-[90%] lg:w-[70%] mx-auto"
           >
             {post.content.map((section, i) => (
               <RenderSection key={i} section={section} accent={post.accent} />

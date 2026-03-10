@@ -8,7 +8,7 @@ export default function OurValue() {
   const tv = t.value;
 
   return (
-    <section id="value" className="relative py-28 overflow-hidden">
+    <section id="value" className="relative py-16 md:py-28 overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
@@ -16,7 +16,7 @@ export default function OurValue() {
           backgroundSize: "60px 60px",
         }}
       />
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

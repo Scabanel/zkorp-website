@@ -21,7 +21,7 @@ const screenshots = [
 
 export default function Awards() {
   return (
-    <section id="awards" className="relative py-28 overflow-hidden">
+    <section id="awards" className="relative py-16 md:py-28 overflow-hidden">
       {/* Dot grid */}
       <div
         className="absolute inset-0"
@@ -30,7 +30,7 @@ export default function Awards() {
           backgroundSize: "24px 24px",
         }}
       />
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export default function Awards() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">12 / Awarded Team</span>
+          <span className="section-label">07 / Awarded Team</span>
         </motion.div>
 
         {/* Header card */}
@@ -91,7 +91,8 @@ export default function Awards() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  gap: "1rem",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
                   borderBottom: "1px solid rgba(255,255,255,0.04)",
                 }}
               >

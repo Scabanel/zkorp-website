@@ -248,7 +248,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
 
 export default function Team() {
   return (
-    <section id="team" className="relative py-28 overflow-hidden">
+    <section id="team" className="relative py-16 md:py-28 overflow-hidden">
       {/* Grid bg */}
       <div
         className="absolute inset-0"
@@ -261,7 +261,7 @@ export default function Team() {
         }}
       />
 
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

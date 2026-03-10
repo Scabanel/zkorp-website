@@ -84,7 +84,7 @@ export default function Context() {
   const tc = t.context;
 
   return (
-    <section id="context" className="relative py-28 overflow-hidden">
+    <section id="context" className="relative py-16 md:py-28 overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
@@ -93,7 +93,7 @@ export default function Context() {
         }}
       />
 
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} style={{ marginBottom: "3rem" }}>
           <span className="section-label">{tc.sectionLabel}</span>
         </motion.div>
@@ -138,6 +138,7 @@ export default function Context() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
             className="relative"
+          style={{ paddingBottom: "2rem" }}
           >
             <ImagePlaceholder label="Starknet Foundation Event Photo" sublabel="→ replace with /public/starknet-event.jpg" src={images.context.starknetEvent || undefined} />
             <motion.div
@@ -147,11 +148,11 @@ export default function Context() {
               transition={{ duration: 0.5, delay: 0.4 }}
               style={{
                 position: "absolute",
-                bottom: "-24px",
-                right: "-8px",
+                bottom: "0",
+                right: "0",
                 background: "linear-gradient(135deg, #C4B9F0 0%, #F07060 100%)",
                 padding: "16px 20px",
-                maxWidth: "250px",
+                maxWidth: "min(250px, 80vw)",
                 boxShadow: "4px 4px 0 rgba(0,0,0,0.5)",
                 zIndex: 10,
               }}

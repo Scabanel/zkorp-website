@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function Contact() {
 
   return (
-    <section id="contact" className="relative py-28 overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-28 overflow-hidden">
       {/* Grid bg */}
       <div
         className="absolute inset-0"
@@ -24,7 +24,7 @@ export default function Contact() {
         }}
       />
 
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">{"14 / Work With Us"}</span>
+          <span className="section-label">{"09 / Work With Us"}</span>
         </motion.div>
 
         {/* Main CTA panel */}

@@ -9,13 +9,13 @@ export default function BuildProjects() {
   const tb = t.build;
 
   return (
-    <section id="build" className="relative py-28 overflow-hidden">
+    <section id="build" className="relative py-16 md:py-28 overflow-hidden">
       <div
         className="absolute inset-0"
         style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "24px 24px" }}
       />
 
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -94,6 +94,7 @@ export default function BuildProjects() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative"
+            style={{ paddingBottom: "2rem" }}
           >
             <ImagePlaceholder label="Rocket / Vision Illustration" sublabel="→ replace with /public/rocket-illustration.png" aspectRatio="4/3" src={images.build.illustration || undefined} />
             <motion.div
@@ -103,11 +104,11 @@ export default function BuildProjects() {
               transition={{ duration: 0.5, delay: 0.4 }}
               style={{
                 position: "absolute",
-                bottom: "-20px",
-                right: "-8px",
+                bottom: "0",
+                right: "0",
                 background: "linear-gradient(135deg, #C4B9F0 0%, #F07060 100%)",
                 padding: "16px 20px",
-                maxWidth: "260px",
+                maxWidth: "min(260px, 80vw)",
                 boxShadow: "4px 4px 0 rgba(0,0,0,0.5)",
                 zIndex: 10,
               }}

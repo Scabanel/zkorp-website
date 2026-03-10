@@ -206,7 +206,7 @@ export default function Hero() {
         className="relative"
         style={{ borderTop: "1px solid rgba(255,255,255,0.07)", zIndex: 10 }}
       >
-        <div className="w-[70%] mx-auto py-5 flex items-center justify-between flex-wrap gap-3">
+        <div className="w-[90%] lg:w-[70%] mx-auto py-5 flex items-center justify-center md:justify-between flex-wrap gap-3">
           {stats.map((stat, i) => (
             <div key={i} className="flex items-center gap-3">
               {i > 0 && (

@@ -10,7 +10,7 @@ const details = [
 
 export default function InRealLife() {
   return (
-    <section id="irl" className="relative py-28 overflow-hidden">
+    <section id="irl" className="relative py-16 md:py-28 overflow-hidden">
       {/* Dot grid */}
       <div
         className="absolute inset-0"
@@ -20,7 +20,7 @@ export default function InRealLife() {
         }}
       />
 
-      <div className="relative z-10 w-[70%] mx-auto">
+      <div className="relative z-10 w-[90%] lg:w-[70%] mx-auto">
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
