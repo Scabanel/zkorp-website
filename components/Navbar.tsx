@@ -42,18 +42,31 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="section-label"
-              style={{ color: "#888", textDecoration: "none", transition: "color 0.2s", fontSize: "1.1rem", letterSpacing: "0.1em" }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#fff")}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#888")}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isBlog = link.href === "/blog";
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="section-label"
+                style={{
+                  color: isBlog ? "#9B8FD4" : "#888",
+                  textDecoration: "none",
+                  transition: "color 0.2s",
+                  fontSize: "1.1rem",
+                  letterSpacing: "0.1em",
+                  ...(isBlog && {
+                    borderBottom: "1px solid rgba(155,143,212,0.4)",
+                    paddingBottom: "2px",
+                  }),
+                }}
+                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = isBlog ? "#C4B9F0" : "#fff")}
+                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = isBlog ? "#9B8FD4" : "#888")}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* CTA */}
@@ -86,17 +99,20 @@ export default function Navbar() {
             style={{ backgroundColor: "rgba(23,23,23,0.98)", borderTop: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}
           >
             <div style={{ padding: "1.5rem" }}>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="section-label"
-                  style={{ display: "block", color: "#888", textDecoration: "none", padding: "10px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isBlog = link.href === "/blog";
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="section-label"
+                    style={{ display: "block", color: isBlog ? "#9B8FD4" : "#888", textDecoration: "none", padding: "10px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <Link
                 href="/#contact"
                 onClick={() => setMenuOpen(false)}
