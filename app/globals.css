@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coral: #F07060;
+  --color-purple: #9B8FD4;
+  --color-zkdark: #171717;
+  --color-zkcard: #1e1e1e;
+  --color-zkelevated: #252525;
+  --color-zkborder: #2d2d2d;
+}
+
+:root {
+  --coral: #F07060;
+  --purple: #9B8FD4;
+  --dark: #171717;
+  --card: #1e1e1e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Ambient blob drift animations ────────────────────────────────── */
+@keyframes blob-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30%       { transform: translate(70px, -55px) scale(1.06); }
+  65%       { transform: translate(-45px, 75px) scale(0.96); }
+}
+@keyframes blob-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-80px, 45px) scale(1.08); }
+  75%       { transform: translate(55px, -65px) scale(0.94); }
+}
+@keyframes blob-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(45px, 85px) scale(1.04); }
+}
+
+body {
+  background-color: #171717;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Grain / noise texture overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Grid line background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Sticker callout */
+.sticker {
+  background: linear-gradient(135deg, #c4b9f0 0%, #f07060 100%);
+  transform: rotate(-2deg);
+  display: inline-block;
+  padding: 16px 24px;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.sticker-sm {
+  background: linear-gradient(135deg, #c4b9f0 0%, #f07060 100%);
+  transform: rotate(1.5deg);
+  display: inline-block;
+  padding: 12px 18px;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #9B8FD4;
+}
+
+/* Window chrome dots */
+.chrome-dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #171717; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #444; }
+
+/* Smooth link hover */
+a { transition: color 0.15s, opacity 0.15s; }
+
+/* Tech badge */
+.tech-badge {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(155, 143, 212, 0.3);
+  color: #9B8FD4;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+/* Metric highlight */
+.metric {
+  font-family: var(--font-archivo-black), sans-serif;
+  color: #F07060;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+}

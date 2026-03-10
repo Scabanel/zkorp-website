@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "WebFetch(domain:zkorp.xyz)",
+      "WebFetch(domain:www.zkorp.xyz)",
+      "Bash(grep -rn 'style={{ backgroundColor: \"\"#171717\"\" }}' c:/Users/kling/zkorp-website/components/ --include=\"*.tsx\")"
+    ]
+  }
+}
