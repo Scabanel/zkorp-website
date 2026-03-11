@@ -1,3 +1,4 @@
+"use client";
 // Fixed ambient blobs - rendered once in the layout, visible across all sections.
 // Pure CSS animations for performance; opacity kept very low to never disturb reading.
 export default function AmbientBlobs() {
