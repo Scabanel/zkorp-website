@@ -49,7 +49,7 @@ export default function Hero() {
             color: "#9B8FD4",
           }}
         >
-          Web3 Tech Builders · 2026
+          Building on Web3 ecosystem before it was cool
         </motion.div>
 
         {/* Wordmark: WE ARE / zKORP */}
@@ -118,7 +118,7 @@ export default function Hero() {
             marginBottom: "1rem",
           }}
         >
-          Web3 Tech Builders for Technical Ambitious Projects
+          <span style={{ color: "#9B8FD4" }}>&ldquo;Z&rdquo;</span> Technical Experts for <span style={{ color: "#9B8FD4" }}>&ldquo;Z&rdquo;</span> Web3 Projects
         </motion.p>
 
         <motion.p
@@ -134,7 +134,7 @@ export default function Hero() {
             marginBottom: "3rem",
           }}
         >
-          &ldquo;Z&rdquo; Technical Experts for &ldquo;Z&rdquo; Web3 Projects
+
         </motion.p>
 
         {/* CTAs */}
