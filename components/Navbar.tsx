@@ -33,15 +33,15 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid rgba(155,143,212,0.2)" : "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <div className="w-full px-8 h-20 flex items-center justify-between">
+      <div className="w-full px-6 xl:px-10 h-16 xl:h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "1.75rem", color: "#F07060", letterSpacing: "-0.01em" }}>z</span>
-          <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "1.75rem", color: "#fff", letterSpacing: "-0.01em" }}>KORP</span>
+        <Link href="/" className="flex items-center flex-shrink-0">
+          <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "clamp(1.25rem, 2vw, 1.75rem)", color: "#F07060", letterSpacing: "-0.01em" }}>z</span>
+          <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "clamp(1.25rem, 2vw, 1.75rem)", color: "#fff", letterSpacing: "-0.01em" }}>KORP</span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden xl:flex items-center gap-5 2xl:gap-8">
           {navLinks.map((link) => {
             const isBlog = link.href === "/blog";
             return (
@@ -53,8 +53,7 @@ export default function Navbar() {
                   color: isBlog ? "#9B8FD4" : "#888",
                   textDecoration: "none",
                   transition: "color 0.2s",
-                  fontSize: "1.1rem",
-                  letterSpacing: "0.1em",
+                  whiteSpace: "nowrap",
                   ...(isBlog && {
                     borderBottom: "1px solid rgba(155,143,212,0.4)",
                     paddingBottom: "2px",
@@ -72,8 +71,8 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="/#contact"
-          className="hidden lg:inline-flex items-center section-label"
-          style={{ border: "1px solid #F07060", color: "#F07060", padding: "10px 22px", textDecoration: "none", letterSpacing: "0.1em", fontSize: "1.1rem", transition: "all 0.2s" }}
+          className="hidden xl:inline-flex items-center section-label flex-shrink-0"
+          style={{ border: "1px solid #F07060", color: "#F07060", padding: "8px 16px", textDecoration: "none", transition: "all 0.2s", whiteSpace: "nowrap" }}
           onMouseEnter={(e) => { const el = e.currentTarget; el.style.backgroundColor = "#F07060"; el.style.color = "#fff"; }}
           onMouseLeave={(e) => { const el = e.currentTarget; el.style.backgroundColor = "transparent"; el.style.color = "#F07060"; }}
         >
@@ -81,7 +80,7 @@ export default function Navbar() {
         </Link>
 
         {/* Mobile menu button */}
-        <button className="lg:hidden flex flex-col gap-1.5 p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <button className="xl:hidden flex flex-col gap-1.5 p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
           <span style={{ display: "block", width: 22, height: 1.5, backgroundColor: "#fff", transition: "transform 0.2s", transform: menuOpen ? "rotate(45deg) translate(2px, 2px)" : "none" }} />
           <span style={{ display: "block", width: 22, height: 1.5, backgroundColor: "#fff", opacity: menuOpen ? 0 : 1, transition: "opacity 0.2s" }} />
           <span style={{ display: "block", width: 22, height: 1.5, backgroundColor: "#fff", transition: "transform 0.2s", transform: menuOpen ? "rotate(-45deg) translate(2px, -2px)" : "none" }} />
