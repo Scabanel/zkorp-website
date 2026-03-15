@@ -134,7 +134,7 @@ export default function BlogPage() {
                                 letterSpacing: "-0.04em",
                               }}
                             >
-                              zKORP
+                              ZKORP
                             </div>
                           </div>
                         )}

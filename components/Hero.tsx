@@ -97,7 +97,7 @@ export default function Hero() {
                 willChange: "transform",
               }}
             >
-              <span style={{ color: "#F07060" }}>z</span>
+              <span style={{ color: "#F07060" }}>Z</span>
               <span style={{ color: "#fff" }}>KORP</span>
             </motion.span>
           </motion.div>

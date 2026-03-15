@@ -162,7 +162,7 @@ export default function Contact() {
         >
           {/* Logo */}
           <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "1.25rem", color: "#F07060" }}>z</span>
+            <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "1.25rem", color: "#F07060" }}>Z</span>
             <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "1.25rem", color: "#fff" }}>KORP</span>
           </div>
 
@@ -201,7 +201,7 @@ export default function Contact() {
         {/* Copyright */}
         <div style={{ marginTop: "2rem", textAlign: "center" }}>
           <p className="section-label" style={{ color: "#333", fontSize: "1.1rem" }}>
-            © 2026 zKorp. All rights reserved.
+            © 2026 ZKORP. All rights reserved.
           </p>
         </div>
       </div>

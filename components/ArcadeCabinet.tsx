@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   onExit: () => void;
@@ -9,6 +9,10 @@ interface Props {
 const SCREEN_W  = 980;
 const SCREEN_H  = 612;
 const CABINET_W = 1120;
+
+// Estimated full cabinet bounding box (widest/tallest parts)
+const CABINET_TOTAL_W = CABINET_W * 1.12; // base is widest  ≈ 1254px
+const CABINET_TOTAL_H = 944;              // marquee+body+panel+lower+base+feet
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
@@ -79,6 +83,20 @@ function ArcadeButton({ color, size = 28 }: { color: string; size?: number }) {
 
 export default function ArcadeCabinet({ onExit }: Props) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [scale, setScale] = useState(1);
+
+  // Compute scale so the cabinet always fits the viewport with breathing room
+  useEffect(() => {
+    const compute = () => {
+      const margin = 48; // px breathing room on each axis
+      const sx = (window.innerWidth  - margin) / CABINET_TOTAL_W;
+      const sy = (window.innerHeight - margin) / CABINET_TOTAL_H;
+      setScale(Math.min(1, sx, sy));
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
 
   useEffect(() => {
     try {
@@ -259,7 +277,11 @@ export default function ArcadeCabinet({ onExit }: Props) {
         }} />
 
         {/* ── CABINET ────────────────────────────────────────────── */}
-        <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", zIndex: 2 }}>
+        <div style={{
+          position: "relative", display: "flex", flexDirection: "column", alignItems: "center", zIndex: 2,
+          transform: `scale(${scale})`,
+          transformOrigin: "center center",
+        }}>
 
           {/* MARQUEE */}
           <div style={{
@@ -282,7 +304,7 @@ export default function ArcadeCabinet({ onExit }: Props) {
               letterSpacing: "0.4em", textTransform: "uppercase",
               textShadow: "0 0 10px rgba(240,112,96,1), 0 0 30px rgba(240,112,96,0.6), 0 0 60px rgba(240,112,96,0.2)",
             }}>
-              <span style={{ color: "#F07060" }}>z</span>
+              <span style={{ color: "#F07060" }}>Z</span>
               <span style={{ color: "#fff" }}>KORP</span>
               <span style={{ color: "#9B8FD4", marginLeft: "0.6rem" }}>ARCADE</span>
             </span>
@@ -493,6 +515,22 @@ export default function ArcadeCabinet({ onExit }: Props) {
                 <span style={{ fontSize: "0.38rem", color: "#202020", letterSpacing: "0.1em", textTransform: "uppercase" }}>Insert Coin</span>
                 <div style={{ width: 44, height: 5, background: "#080808", border: "1px solid #1e1e1e", borderRadius: 2 }} />
               </div>
+              <button
+                onClick={onExit}
+                style={{
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: "0.55rem", letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#444", background: "transparent",
+                  border: "1px solid #2a2a2a",
+                  padding: "5px 16px", cursor: "pointer",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) => { const el = e.currentTarget; el.style.color = "#fff"; el.style.borderColor = "#F07060"; el.style.textShadow = "0 0 6px rgba(240,112,96,0.6)"; }}
+                onMouseLeave={(e) => { const el = e.currentTarget; el.style.color = "#444"; el.style.borderColor = "#2a2a2a"; el.style.textShadow = "none"; }}
+              >
+                ← Back to site
+              </button>
             </div>
 
             {/* P2 — buttons LEFT, joystick RIGHT (mirror of P1) */}
@@ -515,23 +553,6 @@ export default function ArcadeCabinet({ onExit }: Props) {
               </div>
             </div>
 
-            <button
-              onClick={onExit}
-              style={{
-                position: "absolute", right: 28, bottom: 14,
-                fontFamily: "'Courier New', monospace",
-                fontSize: "0.55rem", letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "#383838", background: "transparent",
-                border: "1px solid #252525",
-                padding: "4px 11px", cursor: "pointer",
-                transition: "all 0.2s",
-              }}
-              onMouseEnter={(e) => { const el = e.currentTarget; el.style.color = "#fff"; el.style.borderColor = "#F07060"; el.style.textShadow = "0 0 6px rgba(240,112,96,0.6)"; }}
-              onMouseLeave={(e) => { const el = e.currentTarget; el.style.color = "#383838"; el.style.borderColor = "#252525"; el.style.textShadow = "none"; }}
-            >
-              Back to site
-            </button>
           </div>
 
           {/* LOWER CABINET */}

@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="w-full px-6 xl:px-10 h-16 xl:h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0">
-          <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "clamp(1.25rem, 2vw, 1.75rem)", color: "#F07060", letterSpacing: "-0.01em" }}>z</span>
+          <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "clamp(1.25rem, 2vw, 1.75rem)", color: "#F07060", letterSpacing: "-0.01em" }}>Z</span>
           <span style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "clamp(1.25rem, 2vw, 1.75rem)", color: "#fff", letterSpacing: "-0.01em" }}>KORP</span>
         </Link>
 
