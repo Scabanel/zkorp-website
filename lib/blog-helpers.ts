@@ -20,7 +20,7 @@ export interface BlogPost {
 }
 
 export interface BlogSection {
-  type: "heading" | "paragraph" | "list" | "quote" | "cta" | "image" | "video";
+  type: "heading" | "paragraph" | "list" | "quote" | "cta" | "image" | "video" | "tweet";
   level?: 2 | 3;
   text?: string;
   items?: string[];
@@ -30,6 +30,7 @@ export interface BlogSection {
   alt?: string;
   caption?: string;
   youtubeId?: string;
+  tweetId?: string;
 }
 
 export const p    = (text: string): BlogSection => ({ type: "paragraph", text });
@@ -38,5 +39,6 @@ export const h3   = (text: string): BlogSection => ({ type: "heading", level: 3,
 export const q    = (text: string): BlogSection => ({ type: "quote", text });
 export const list = (items: string[]): BlogSection => ({ type: "list", items });
 export const img  = (src: string, alt?: string, caption?: string): BlogSection => ({ type: "image", src, alt, caption });
-export const vid  = (youtubeId: string): BlogSection => ({ type: "video", youtubeId });
+export const vid   = (youtubeId: string): BlogSection => ({ type: "video", youtubeId });
+export const tweet = (tweetId: string): BlogSection => ({ type: "tweet", tweetId });
 export const cta  = (label: string, href: string): BlogSection => ({ type: "cta", label, href });

@@ -1,8 +1,41 @@
 "use client";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { type BlogPost, type BlogSection } from "@/lib/blog-posts";
+
+function TweetEmbed({ tweetId }: { tweetId: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const load = () => {
+      (window as any).twttr?.widgets?.load(ref.current);
+    };
+    if ((window as any).twttr) {
+      load();
+    } else if (!document.querySelector('script[src="https://platform.twitter.com/widgets.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      script.charset = "utf-8";
+      script.onload = load;
+      document.body.appendChild(script);
+    } else {
+      const interval = setInterval(() => {
+        if ((window as any).twttr) { clearInterval(interval); load(); }
+      }, 100);
+    }
+  }, [tweetId]);
+
+  return (
+    <div ref={ref} style={{ margin: "2rem 0", display: "flex", justifyContent: "center" }}>
+      <blockquote className="twitter-tweet">
+        <a href={`https://twitter.com/zKorp_/status/${tweetId}`}></a>
+      </blockquote>
+    </div>
+  );
+}
 
 function RenderSection({ section, accent }: { section: BlogSection; accent: string }) {
   switch (section.type) {
@@ -135,6 +168,9 @@ function RenderSection({ section, accent }: { section: BlogSection; accent: stri
           )}
         </div>
       );
+
+    case "tweet":
+      return <TweetEmbed tweetId={section.tweetId!} />;
 
     case "video":
       return (

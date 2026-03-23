@@ -5,7 +5,9 @@
       "WebFetch(domain:zkorp.xyz)",
       "WebFetch(domain:www.zkorp.xyz)",
       "Bash(grep -rn 'style={{ backgroundColor: \"\"#171717\"\" }}' c:/Users/kling/zkorp-website/components/ --include=\"*.tsx\")",
-      "Bash(ls c:/Users/kling/zkorp-website/components/*.tsx)"
+      "Bash(ls c:/Users/kling/zkorp-website/components/*.tsx)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(taskkill /F /PID 34552)"
     ]
   }
 }
