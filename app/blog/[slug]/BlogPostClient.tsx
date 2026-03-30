@@ -5,6 +5,24 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { type BlogPost, type BlogSection } from "@/lib/blog-posts";
 
+function renderText(text: string) {
+  return text.split(/(@\w+)/g).map((part, i) =>
+    /^@\w+$/.test(part) ? (
+      <a
+        key={i}
+        href={`https://x.com/${part.slice(1)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "#1d9bf0", textDecoration: "none" }}
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    )
+  );
+}
+
 function TweetEmbed({ tweetId }: { tweetId: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -83,7 +101,7 @@ function RenderSection({ section, accent }: { section: BlogSection; accent: stri
             marginBottom: "1.25rem",
           }}
         >
-          {section.text}
+          {renderText(section.text!)}
         </p>
       );
 
@@ -106,7 +124,7 @@ function RenderSection({ section, accent }: { section: BlogSection; accent: stri
               fontStyle: "italic",
             }}
           >
-            &ldquo;{section.text}&rdquo;
+            &ldquo;{renderText(section.text!)}&rdquo;
           </p>
         </blockquote>
       );
@@ -136,7 +154,7 @@ function RenderSection({ section, accent }: { section: BlogSection; accent: stri
               }}
             >
               <span style={{ position: "absolute", left: 0, color: "#F07060", fontWeight: 700 }}>·</span>
-              {item}
+              {renderText(item)}
             </li>
           ))}
         </ul>
