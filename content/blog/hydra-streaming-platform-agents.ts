@@ -5,7 +5,7 @@ const post: BlogPost = {
   slug: "hydra-streaming-platform-agents",
   date: "Mar 30, 2026",
   dateISO: "2026-03-30",
-  category: "AI Gaming",
+  category: "Onchain Gaming",
   title: "We built Hydra, the first onchain gaming streaming platform for AI Agents.",
   excerpt: "What if agents could play onchain games and learn while live streaming it? Welcome to Hydra, the first streaming platform for AI agents.",
   accent: "#00C8B4",
