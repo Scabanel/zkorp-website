@@ -2,7 +2,9 @@
 import { ImagePlaceholder } from "./Context";
 import { images } from "@/lib/images";
 
-const projects = [
+// Hidden for confidentiality — do not delete, may be shown later
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const hiddenProjects = [
   {
     id: "06",
     name: "Zashapon",
@@ -17,6 +19,23 @@ const projects = [
     clientColor: "#FFCC00",
     statusBar: true,
   },
+  {
+    id: "10",
+    name: "ConfidentialGold",
+    client: "ZAMA",
+    tagline: "Confidential DeFi - Your balance, encrypted onchain",
+    description:
+      "In 2026, Zama massively invests in DeFi. Turn your public gold tokens into confidential gold. Your balance stays encrypted onchain, meaning that only YOU can see it.",
+    metric: "Pioneer in confidential DeFi infrastructure",
+    stack: ["Goldsky", "Solidity", "ZAMA fhEVM", "Hardhat", "React JS"],
+    image: images.projects.confidentialGold,
+    imagePlaceholder: "ConfidentialGold - Steampunk gold illustration",
+    clientColor: "#FFCC00",
+    statusBar: true,
+  },
+];
+
+const projects = [
   {
     id: "07",
     name: "Armored MMA",
@@ -56,20 +75,6 @@ const projects = [
     stack: ["Goldsky", "Solidity", "ZAMA fhEVM", "Hardhat", "React JS"],
     image: images.projects.playAscend,
     imagePlaceholder: "PlayAscend - Ascend game visual",
-    clientColor: "#FFCC00",
-    statusBar: true,
-  },
-  {
-    id: "10",
-    name: "ConfidentialGold",
-    client: "ZAMA",
-    tagline: "Confidential DeFi - Your balance, encrypted onchain",
-    description:
-      "In 2026, Zama massively invests in DeFi. Turn your public gold tokens into confidential gold. Your balance stays encrypted onchain, meaning that only YOU can see it.",
-    metric: "Pioneer in confidential DeFi infrastructure",
-    stack: ["Goldsky", "Solidity", "ZAMA fhEVM", "Hardhat", "React JS"],
-    image: images.projects.confidentialGold,
-    imagePlaceholder: "ConfidentialGold - Steampunk gold illustration",
     clientColor: "#FFCC00",
     statusBar: true,
   },
