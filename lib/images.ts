@@ -32,12 +32,15 @@ export const images = {
 
   // ── Section "Work Projects" ──────────────────────────────────
   projects: {
+    hydra: "/hydra.png",
+    privacyLooker: "/privacylooker.png",
     zashapon: "zashapon.png",             // ex: "/projects/zashapon.jpg"
     armoredMma: "armored-mma.png",           // ex: "/projects/armored-mma.jpg"
     deberrys: "deberrys.png",             // ex: "/projects/deberrys.jpg"
     playAscend: "playascend.png",           // ex: "/projects/playascend.jpg"
     confidentialGold: "confidentialgold.png",     // ex: "/projects/confidentialgold.jpg"
     lootSurvivor: "loot-survivor.png",         // ex: "/projects/loot-survivor.jpg"
+    onyx: "/onyx.png",                         // ex: "/projects/onyx.jpg"
   },
 
   // ── Section "Awards" - screenshots de jeux ──────────────────

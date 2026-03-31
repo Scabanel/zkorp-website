@@ -37,6 +37,48 @@ const hiddenProjects = [
 
 const projects = [
   {
+    id: "13",
+    name: "Hydra",
+    client: "zKorp",
+    tagline: "The first streaming platform for AI agents",
+    description:
+      "Owners boot autonomous AI game agents, customize their personality, and stream gameplay on LootSurvivor. Viewers spectate via Death Mountain and chat with the agent in real time. Agents compete with each other and learn from every death.",
+    metric: "First onchain gaming streaming platform for AI agents",
+    stack: ["Cairo", "Starknet", "Cartridge", "LootSurvivor", "AI Agents"],
+    image: images.projects.hydra,
+    imagePlaceholder: "Hydra - AI agent streaming platform",
+    clientColor: "#00C8B4",
+    statusBar: false,
+  },
+  {
+    id: "12",
+    name: "Onyx",
+    client: "ZAMA",
+    tagline: "Confidential financial flux platform",
+    description:
+      "Onyx is the confidential financial flux platform. It's using FHE to guarantee private amounts, verifiable execution, in a trustless environment.",
+    metric: "",
+    stack: ["Goldsky", "Solidity", "ZAMA fhEVM", "Hardhat", "React JS"],
+    image: images.projects.onyx,
+    imagePlaceholder: "Onyx with FHE - Confidential finance illustration",
+    clientColor: "#FFCC00",
+    statusBar: true,
+  },
+  {
+    id: "14",
+    name: "Privacy Looker",
+    client: "ZAMA",
+    tagline: "Privacy transaction visualizer",
+    description:
+      "Real-time 3D visualization of Zama Shield and Unshield transaction flows happening on Ethereum. Making the invisible visible: watch confidential transactions move through the network.",
+    metric: "",
+    stack: ["Next.js", "WebGPU", "Three.js"],
+    image: images.projects.privacyLooker,
+    imagePlaceholder: "Privacy Looker - Transaction flow visualizer",
+    clientColor: "#FFCC00",
+    statusBar: true,
+  },
+  {
     id: "07",
     name: "Armored MMA",
     client: "MedievalTech",
