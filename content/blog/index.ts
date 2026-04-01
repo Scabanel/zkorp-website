@@ -8,10 +8,7 @@
 import noMoreClickToEarn from "./no-more-click-to-earn-realms";
 import devconnectArgentina from "./web3-devconnect-argentina-2025";
 import hydraStreamingPlatform from "./hydra-streaming-platform-agents";
-
-import web3Test from "./web3-test";
 export const allPosts = [
-  web3Test,
   hydraStreamingPlatform,
   noMoreClickToEarn,
   devconnectArgentina,
