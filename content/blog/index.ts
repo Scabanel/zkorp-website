@@ -8,9 +8,7 @@
 import noMoreClickToEarn from "./no-more-click-to-earn-realms";
 import devconnectArgentina from "./web3-devconnect-argentina-2025";
 import hydraStreamingPlatform from "./hydra-streaming-platform-agents";
-import testingArticle from "./testing-article";
 export const allPosts = [
-  testingArticle,
   hydraStreamingPlatform,
   noMoreClickToEarn,
   devconnectArgentina,
