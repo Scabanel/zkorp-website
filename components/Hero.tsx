@@ -49,7 +49,7 @@ export default function Hero() {
             color: "#9B8FD4",
           }}
         >
-          Building on Web3 ecosystem before it was cool
+          Web3 Tech team specialized in privacy and onchain gaming
         </motion.div>
 
         {/* Wordmark: WE ARE / zKORP */}
