@@ -4,13 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Your context", href: "/#context" },
-  { label: "Our expertise", href: "/#value" },
-  { label: "We are builders", href: "/#build" },
-  { label: "Who we are", href: "/#team" },
-  { label: "Our projects", href: "/#work" },
-  { label: "Awards", href: "/#awards" },
-  { label: "Our content", href: "/#content" },
+  { label: "Manifesto", href: "/#manifesto" },
+  { label: "Privacy", href: "/#privacy" },
+  { label: "Onchain Gaming", href: "/#gaming" },
+  { label: "AI Agents for Web3", href: "/#ai" },
+  { label: "Our Team", href: "/#team" },
+  { label: "IRL", href: "/#irl" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -42,28 +41,40 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden xl:flex items-center gap-5 2xl:gap-8">
-          {navLinks.map((link) => {
+          {navLinks.map((link, index) => {
             const isBlog = link.href === "/blog";
             return (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="section-label"
-                style={{
-                  color: isBlog ? "#9B8FD4" : "#888",
-                  textDecoration: "none",
-                  transition: "color 0.2s",
-                  whiteSpace: "nowrap",
-                  ...(isBlog && {
-                    borderBottom: "1px solid rgba(155,143,212,0.4)",
-                    paddingBottom: "2px",
-                  }),
-                }}
-                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = isBlog ? "#C4B9F0" : "#fff")}
-                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = isBlog ? "#9B8FD4" : "#888")}
-              >
-                {link.label}
-              </Link>
+              <div key={link.label} className="flex items-center gap-5 2xl:gap-8">
+                <Link
+                  href={link.href}
+                  className="section-label"
+                  style={{
+                    color: isBlog ? "#9B8FD4" : "#888",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                    whiteSpace: "nowrap",
+                    ...(isBlog && {
+                      borderBottom: "1px solid rgba(155,143,212,0.4)",
+                      paddingBottom: "2px",
+                    }),
+                  }}
+                  onMouseEnter={(e) => ((e.target as HTMLElement).style.color = isBlog ? "#C4B9F0" : "#fff")}
+                  onMouseLeave={(e) => ((e.target as HTMLElement).style.color = isBlog ? "#9B8FD4" : "#888")}
+                >
+                  {link.label}
+                </Link>
+                {index < navLinks.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: "1px",
+                      height: "14px",
+                      backgroundColor: "rgba(155,143,212,0.6)",
+                      display: "inline-block",
+                    }}
+                  />
+                )}
+              </div>
             );
           })}
         </div>

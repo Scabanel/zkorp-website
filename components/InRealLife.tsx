@@ -1,21 +1,17 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChromeDots, ImagePlaceholder } from "./Context";
-import { images } from "@/lib/images";
-
-const VIDEO_ID = "_9OughD300Y";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ChromeDots } from "./shared";
 
 const details = [
   "Involvement in IRL events, panels around the world (ETHcc, Devcon...)",
   "One month residency in New York for close work with Dojo/Starknet ecosystem",
+  "Present at Zama Builder Villa during EthCC Cannes 2026",
 ];
 
 export default function InRealLife() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <section id="irl" className="relative py-16 md:py-28 overflow-hidden">
+    <section id="irl" className="relative py-12 md:py-20 overflow-hidden">
       {/* Dot grid */}
       <div
         className="absolute inset-0"
@@ -34,10 +30,10 @@ export default function InRealLife() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">05 / In Real Life</span>
+          <span className="section-label">06 / In Real Life</span>
         </motion.div>
 
-        {/* Top row: text left, photos right — balanced heights */}
+        {/* Top row: text left, photos right - balanced heights */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Left */}
           <motion.div
@@ -65,10 +61,10 @@ export default function InRealLife() {
                   letterSpacing: "0.02em",
                 }}
               >
-                Above the Screen
+                We show up
               </h2>
               <p style={{ color: "#bbb", fontSize: "1.1rem", lineHeight: 1.75 }}>
-                We are both active online <strong style={{ color: "#fff" }}>AND</strong> in real life.
+                We are both active online <strong style={{ color: "#fff" }}>AND</strong> in real life. ETHcc, Devcon, Starknet summits - we present, we panel, we ship.
               </p>
             </div>
 
@@ -99,128 +95,86 @@ export default function InRealLife() {
             </div>
           </motion.div>
 
-          {/* Right: photos + video */}
+          {/* Right: photo grid */}
           <motion.div
             initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: 0.12 }}
-            className="grid grid-cols-3 gap-4"
+            className="grid grid-cols-3 gap-3"
           >
-            <ImagePlaceholder label="Starknet Event" sublabel="→ /public/irl-starknet.jpg" aspectRatio="1/1" src={images.irl.starknetEvent || undefined} />
-            <ImagePlaceholder label="Loot Survivor Event" sublabel="→ /public/irl-loot.jpg" aspectRatio="1/1" src={images.irl.lootSurvivorEvent || undefined} />
-
-            {/* Video thumbnail — click opens lightbox */}
-            <div
-              onClick={() => setOpen(true)}
-              style={{
-                position: "relative",
-                aspectRatio: "1/1",
-                overflow: "hidden",
-                border: "1px solid rgba(155,143,212,0.25)",
-                cursor: "pointer",
-              }}
-            >
-              {/* YouTube thumbnail, cropped to square */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
-                alt="Video thumbnail"
+            {[
+              "/photos/IMG_3039 (1).jpeg",
+              "/photos/IMG_7904.jpg",
+              "/photos/PXL_20260402_093525888.MP.jpg",
+              "/photos/IMG_8011.jpg",
+              "/photos/IMG_3163.jpg",
+              "/photos/IMG_1804.JPG",
+              "/photos/IMG_7658.jpg",
+              "/photos/IMG_7747.jpg",
+              "/photos/team.png",
+            ].map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: "block",
+                  aspectRatio: "1/1",
+                  overflow: "hidden",
+                  border: "1px solid rgba(155,143,212,0.2)",
+                  position: "relative",
                 }}
-              />
-              {/* Dark overlay on hover */}
-              <div
-                className="group-hover:opacity-100"
-                style={{
-                  position: "absolute", inset: 0,
-                  background: "rgba(0,0,0,0.35)",
-                  transition: "background 0.2s",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.5)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.35)")}
               >
-                {/* Play button */}
-                <div style={{
-                  width: 48, height: 48, borderRadius: "50%",
-                  backgroundColor: "rgba(240,112,96,0.9)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  boxShadow: "0 0 20px rgba(240,112,96,0.5)",
-                  transition: "transform 0.2s",
-                }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" style={{ marginLeft: 3 }}>
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            {/* Lightbox */}
-            <AnimatePresence>
-              {open && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  onClick={() => setOpen(false)}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt="zKorp IRL"
                   style={{
-                    position: "fixed", inset: 0, zIndex: 9999,
-                    backgroundColor: "rgba(0,0,0,0.88)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    padding: "2rem",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    filter: "brightness(0.86) contrast(1.04) saturate(0.96)",
+                    transition: "transform 0.4s",
                   }}
-                >
-                  <motion.div
-                    initial={{ scale: 0.92, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.92, opacity: 0 }}
-                    transition={{ duration: 0.22 }}
-                    onClick={(e) => e.stopPropagation()}
-                    style={{
-                      position: "relative",
-                      width: "100%",
-                      maxWidth: "900px",
-                      aspectRatio: "16/9",
-                      border: "1px solid rgba(155,143,212,0.3)",
-                      boxShadow: "0 32px 80px rgba(0,0,0,0.8)",
-                    }}
-                  >
-                    <iframe
-                      src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1`}
-                      title="Building FHE consumer apps - ZKORP @ Zama CoFHE Shop"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
-                    />
-                    {/* Close button */}
-                    <button
-                      onClick={() => setOpen(false)}
-                      style={{
-                        position: "absolute", top: -16, right: -16,
-                        width: 32, height: 32, borderRadius: "50%",
-                        backgroundColor: "#1c1c1e",
-                        border: "1px solid rgba(255,255,255,0.15)",
-                        color: "#aaa", fontSize: "1rem",
-                        cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                        transition: "color 0.2s, border-color 0.2s",
-                      }}
-                      onMouseEnter={(e) => { const el = e.currentTarget; el.style.color = "#fff"; el.style.borderColor = "#F07060"; }}
-                      onMouseLeave={(e) => { const el = e.currentTarget; el.style.color = "#aaa"; el.style.borderColor = "rgba(255,255,255,0.15)"; }}
-                    >
-                      ✕
-                    </button>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.transform = "scale(1.05)")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.transform = "scale(1)")}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Blog link */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="lg:col-span-2"
+            style={{ marginTop: "1.5rem" }}
+          >
+            <div className="flex flex-wrap gap-5 items-center">
+              <Link
+                href="/blog/web3-devconnect-argentina-2025"
+                style={{ fontFamily: "var(--font-space-mono), monospace", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#F07060", textDecoration: "underline", transition: "opacity 0.2s" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+              >
+                Read about our Argentina trip →
+              </Link>
+              <a
+                href="https://x.com/zKorp_/status/2039659843171009006"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontFamily: "var(--font-space-mono), monospace", fontSize: "1.1rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#9B8FD4", textDecoration: "underline", transition: "opacity 0.2s" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+              >
+                Zama Builder Villa @ EthCC Cannes 2026 →
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

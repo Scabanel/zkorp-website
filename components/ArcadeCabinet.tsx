@@ -5,7 +5,7 @@ interface Props {
   onExit: () => void;
 }
 
-// iframe renders AT the screen size — no scale transform, no zoom
+// iframe renders AT the screen size - no scale transform, no zoom
 const SCREEN_W  = 980;
 const SCREEN_H  = 612;
 const CABINET_W = 1120;
@@ -475,7 +475,7 @@ export default function ArcadeCabinet({ onExit }: Props) {
               animation: "marquee-glow 3s ease-in-out infinite",
             }} />
 
-            {/* P1 — joystick LEFT, buttons RIGHT (Street Fighter layout) */}
+            {/* P1 - joystick LEFT, buttons RIGHT (Street Fighter layout) */}
             <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5 }}>
                 <Joystick />
@@ -495,7 +495,7 @@ export default function ArcadeCabinet({ onExit }: Props) {
               </div>
             </div>
 
-            {/* Centre — start + coin */}
+            {/* Centre - start + coin */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
               <div style={{ display: "flex", gap: 16 }}>
                 {["1P START", "2P START"].map((label) => (
@@ -533,7 +533,7 @@ export default function ArcadeCabinet({ onExit }: Props) {
               </button>
             </div>
 
-            {/* P2 — buttons LEFT, joystick RIGHT (mirror of P1) */}
+            {/* P2 - buttons LEFT, joystick RIGHT (mirror of P1) */}
             <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
                 <div style={{ display: "flex", gap: 10 }}>

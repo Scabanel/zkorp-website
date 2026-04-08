@@ -40,7 +40,7 @@ export const images = {
     playAscend: "playascend.png",           // ex: "/projects/playascend.jpg"
     confidentialGold: "confidentialgold.png",     // ex: "/projects/confidentialgold.jpg"
     lootSurvivor: "loot-survivor.png",         // ex: "/projects/loot-survivor.jpg"
-    onyx: "/onyx.png",                         // ex: "/projects/onyx.jpg"
+    onyx: "/onyx-cover.jpeg",                  // ex: "/projects/onyx.jpg"
   },
 
   // ── Section "Awards" - screenshots de jeux ──────────────────

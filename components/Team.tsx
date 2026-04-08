@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ChromeDots } from "./Context";
+import { ChromeDots } from "./shared";
 import { images } from "@/lib/images";
 
 const team = [
@@ -187,7 +187,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
               boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), inset 0 -1px 0 rgba(0,0,0,0.3)",
             }}>
 
-              {/* — Holographic rainbow — */}
+              {/* - Holographic rainbow - */}
               <div style={{
                 position: "absolute", inset: 0,
                 opacity: isHovered ? 0.55 : 0, transition: "opacity 0.35s ease",
@@ -203,7 +203,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
                 mixBlendMode: "screen", pointerEvents: "none", zIndex: 2,
               }} />
 
-              {/* — Specular glare — */}
+              {/* - Specular glare - */}
               <div style={{
                 position: "absolute", inset: 0,
                 opacity: isHovered ? 1 : 0, transition: "opacity 0.35s ease",
@@ -211,7 +211,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
                 pointerEvents: "none", zIndex: 3,
               }} />
 
-              {/* — Corner foil — */}
+              {/* - Corner foil - */}
               <div style={{
                 position: "absolute", bottom: 0, right: 0, width: "40%", height: "30%",
                 opacity: isHovered ? 0.25 : 0.04, transition: "opacity 0.4s ease",
@@ -219,14 +219,14 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
                 pointerEvents: "none", zIndex: 2,
               }} />
 
-              {/* ── PHOTO — glass frame wrapper ── */}
+              {/* ── PHOTO - glass frame wrapper ── */}
               <div style={{
                 width: "100%",
                 padding: "1.5px", background: photoGlass,
                 flexShrink: 0, position: "relative", zIndex: 1,
                 boxShadow: "0 2px 8px rgba(0,0,0,0.5)",
               }}>
-                {/* Inner square container — aspect ratio here so height is always = width */}
+                {/* Inner square container - aspect ratio here so height is always = width */}
                 <div style={{
                   width: "100%", aspectRatio: "1/1",
                   backgroundColor: "#2a2a2a",
@@ -263,7 +263,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
                 {member.name}
               </p>
 
-              {/* ── ROLES — flex:1 pushes social to bottom ── */}
+              {/* ── ROLES - flex:1 pushes social to bottom ── */}
               <div style={{ display: "flex", flexDirection: "column", gap: "0.12rem", flex: 1, position: "relative", zIndex: 1 }}>
                 {member.roles.map((role, i) => (
                   <span key={i} className="section-label" style={{ color: "#999", fontSize: "0.62rem" }}>
@@ -272,7 +272,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
                 ))}
               </div>
 
-              {/* ── SOCIAL — always at bottom ── */}
+              {/* ── SOCIAL - always at bottom ── */}
               <div style={{ display: "flex", gap: "0.25rem", position: "relative", zIndex: 5 }}>
                 {member.links.x && (
                   <a href={member.links.x} target="_blank" rel="noopener noreferrer" title="X / Twitter"
@@ -314,7 +314,7 @@ function TeamCard({ member, index }: { member: (typeof team)[0]; index: number }
 
 export default function Team() {
   return (
-    <section id="team" className="relative py-16 md:py-28 overflow-hidden">
+    <section id="team" className="relative py-12 md:py-20 overflow-hidden">
       <div className="absolute inset-0" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)`,
         backgroundSize: "60px 60px",
@@ -326,7 +326,7 @@ export default function Team() {
           viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">04 / We Are ZKORP</span>
+          <span className="section-label">05 / The Team</span>
         </motion.div>
 
         <motion.div
@@ -336,11 +336,18 @@ export default function Team() {
         >
           <ChromeDots />
           <h2 style={{ fontFamily: "var(--font-archivo-black), sans-serif", fontSize: "clamp(1.1rem, 3vw, 1.75rem)", textTransform: "uppercase", color: "#fff", marginBottom: "1rem", letterSpacing: "0.02em" }}>
-            We are Web3 builders, we are <span style={{ color: "#F07060" }}>ZKORP</span>
+            We are <span style={{ color: "#F07060" }}>Z</span><span style={{ color: "#fff" }}>KORP</span>
           </h2>
-          <p style={{ color: "#bbb", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: "720px" }}>
-            We work with Web3 companies because we deeply trust utility and future of this ecosystem, in many global fields. That&rsquo;s why we became specialists in this technical area, to transform projects into concrete proof of problem&rsquo;s solving.
-          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+              <span style={{ color: "#F07060", fontFamily: "var(--font-space-mono), monospace", flexShrink: 0 }}>→</span>
+              <p style={{ color: "#bbb", fontSize: "1rem", lineHeight: 1.7 }}>6 Web3 specialists, builders since before it was cool</p>
+            </div>
+            <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+              <span style={{ color: "#F07060", fontFamily: "var(--font-space-mono), monospace", flexShrink: 0 }}>→</span>
+              <p style={{ color: "#bbb", fontSize: "1rem", lineHeight: 1.7 }}>From smart contracts to 3D, from sales to AI - we cover the full stack</p>
+            </div>
+          </div>
         </motion.div>
 
         {/* 6 slabs in one row */}
@@ -349,6 +356,36 @@ export default function Team() {
             <TeamCard key={member.name} member={member} index={i} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          style={{ marginTop: "3rem" }}
+        >
+          <p className="section-label" style={{ color: "#666", marginBottom: "1rem", textAlign: "center" }}>
+            Watch: We are ZKORP
+          </p>
+          <div
+            style={{
+              position: "relative",
+              maxWidth: "760px",
+              margin: "0 auto",
+              aspectRatio: "16/9",
+              overflow: "hidden",
+              border: "1px solid rgba(155,143,212,0.25)",
+            }}
+          >
+            <iframe
+              src="https://www.youtube.com/embed/_VPtM8GFRVo"
+              title="WE ARE ZKORP"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

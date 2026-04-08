@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function Contact() {
 
   return (
-    <section id="contact" className="relative py-16 md:py-28 overflow-hidden">
+    <section id="contact" className="relative py-12 md:py-20 overflow-hidden">
       {/* Grid bg */}
       <div
         className="absolute inset-0"
@@ -33,7 +33,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">{"09 / Work With Us"}</span>
+          <span className="section-label">{"07 / Work With Us"}</span>
         </motion.div>
 
         {/* Main CTA panel */}
@@ -128,7 +128,7 @@ export default function Contact() {
           </p>
 
           <motion.a
-            href="mailto:thomas@zkorp.xyz"
+            href="mailto:contact@zkorp.xyz"
             whileHover={{ opacity: 0.75 }}
             style={{
               fontFamily: "var(--font-archivo-black), sans-serif",
@@ -139,7 +139,7 @@ export default function Contact() {
               letterSpacing: "0.02em",
             }}
           >
-            thomas@zkorp.xyz
+            contact@zkorp.xyz
           </motion.a>
         </motion.div>
 

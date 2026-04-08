@@ -1,13 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Context from "@/components/Context";
-import OurValue from "@/components/OurValue";
-import BuildProjects from "@/components/BuildProjects";
+import Manifesto from "@/components/Manifesto";
+import NarrativePrivacy from "@/components/NarrativePrivacy";
+import NarrativeGaming from "@/components/NarrativeGaming";
+import NarrativeAI from "@/components/NarrativeAI";
 import Team from "@/components/Team";
 import InRealLife from "@/components/InRealLife";
-import WorkProjects from "@/components/WorkProjects";
-import Awards from "@/components/Awards";
-import ContentSection from "@/components/ContentSection";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -16,14 +14,12 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Context />
-        <OurValue />
-        <BuildProjects />
+        <Manifesto />
+        <NarrativePrivacy />
+        <NarrativeGaming />
+        <NarrativeAI />
         <Team />
         <InRealLife />
-        <WorkProjects />
-        <Awards />
-        <ContentSection />
         <Contact />
       </main>
     </>
