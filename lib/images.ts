@@ -59,6 +59,7 @@ export const images = {
     noePichot: "noe.png",            // ex: "/team/noe-pichot.jpg"
     stevenKlinger: "steven.png",        // ex: "/team/steven-klinger.jpg"
     jcMehr: "jc.png",               // ex: "/team/jc-mehr.jpg"
+    lysa: "Lysa.jpg",               // ex: "/team/lysa.jpg"
   },
 
 };

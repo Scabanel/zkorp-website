@@ -30,7 +30,7 @@ export default function NarrativeAI() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">04 / Agentic AI</span>
+          <span className="section-label">05 / Agentic AI</span>
         </motion.div>
 
         {/* Intro: 2 columns */}

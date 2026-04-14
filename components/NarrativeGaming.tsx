@@ -37,7 +37,7 @@ export default function NarrativeGaming() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">03 / Onchain Gaming</span>
+          <span className="section-label">04 / Onchain Gaming</span>
         </motion.div>
 
         {/* Intro: 2 columns */}

@@ -34,7 +34,7 @@ export default function NarrativePrivacy() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">02 / Privacy & FHE</span>
+          <span className="section-label">03 / Privacy & FHE</span>
         </motion.div>
 
         {/* Intro: 2 columns */}

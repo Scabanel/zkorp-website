@@ -47,6 +47,13 @@ const team = [
     photo: images.team.jcMehr,
     links: { x: "https://x.com/djizus_", linkedin: "https://www.linkedin.com/in/mehrjc/" },
   },
+  {
+    name: "Lysa Matmar",
+    roles: ["Fullstack Dev", "Intern"],
+    initials: "LM",
+    photo: images.team.lysa,
+    links: { linkedin: "https://www.linkedin.com/in/lysa-matmar/" },
+  },
 ];
 
 function IconX() {
@@ -326,7 +333,7 @@ export default function Team() {
           viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">05 / The Team</span>
+          <span className="section-label">02 / The Team</span>
         </motion.div>
 
         <motion.div
@@ -351,7 +358,7 @@ export default function Team() {
         </motion.div>
 
         {/* 6 slabs in one row */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
           {team.map((member, i) => (
             <TeamCard key={member.name} member={member} index={i} />
           ))}

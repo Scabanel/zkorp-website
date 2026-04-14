@@ -15,10 +15,10 @@ export default function Home() {
       <main>
         <Hero />
         <Manifesto />
+        <Team />
         <NarrativePrivacy />
         <NarrativeGaming />
         <NarrativeAI />
-        <Team />
         <InRealLife />
         <Contact />
       </main>
