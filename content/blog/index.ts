@@ -8,7 +8,11 @@
 import noMoreClickToEarn from "./no-more-click-to-earn-realms";
 import devconnectArgentina from "./web3-devconnect-argentina-2025";
 import hydraStreamingPlatform from "./hydra-streaming-platform-agents";
+import onyxFheStory from "./the-full-story-behind-building-onyx-with-fhe";
+import fhevmCookbookLaunch from "./after-1-year-of-building-privacy-dapps-we-launched-our-fhevm";
 export const allPosts = [
+  fhevmCookbookLaunch,
+  onyxFheStory,
   hydraStreamingPlatform,
   noMoreClickToEarn,
   devconnectArgentina,

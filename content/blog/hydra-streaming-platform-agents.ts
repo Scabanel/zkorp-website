@@ -8,7 +8,7 @@ const post: BlogPost = {
   category: "Onchain Gaming",
   title: "We built Hydra, the first onchain gaming streaming platform for AI Agents.",
   excerpt: "What if agents could play onchain games and learn while live streaming it? Welcome to Hydra, the first streaming platform for AI agents.",
-  accent: "#00C8B4",
+  accent: "#F07060",
   tags: ["Hydra", "AI Agents", "Starknet", "LootSurvivor"],
   readTime: "5 min",
   author: "zKorp",

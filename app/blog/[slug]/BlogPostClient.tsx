@@ -1,9 +1,80 @@
 "use client";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { type BlogPost, type BlogSection } from "@/lib/blog-posts";
+import { getCategoryAccent } from "@/lib/blog-helpers";
+
+const TOKEN_COLORS: Record<string, string> = {
+  comment: "#6b7280",
+  string: "#A5D6A7",
+  keyword: "#C792EA",
+  type: "#82AAFF",
+  number: "#F78C6C",
+  builtin: "#4DD0E1",
+  function: "#FFD166",
+};
+
+const SOLIDITY_PATTERN =
+  /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\b(?:pragma|solidity|import|from|contract|interface|library|struct|mapping|enum|private|public|internal|external|returns|return|function|if|else|for|while|true|false|calldata|storage|memory|view|pure|payable|event|emit|modifier|indexed)\b)|(\b(?:address|bool|string|bytes\d*|bytes|uint\d*|int\d*|euint64|euint128|externalEuint64)\b)|(\b\d+(?:\.\d+)?\b)|(\b(?:FHE|IERC7984|msg|block|this|tx)\b)|(\b[a-zA-Z_]\w*(?=\s*\())/g;
+const TYPESCRIPT_PATTERN =
+  /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`)|(\b(?:import|from|export|default|const|let|var|function|return|if|else|for|while|switch|case|break|continue|try|catch|finally|throw|new|async|await|class|extends|implements|interface|type|enum|public|private|protected|readonly|static|as|in|of|typeof|instanceof|void|declare)\b)|(\b(?:string|number|boolean|unknown|any|never|object|undefined|null|Promise|Record|ReactNode)\b)|(\b\d+(?:\.\d+)?\b)|(\b(?:console|window|document|Math|JSON|Array|Object|Set|Map)\b)|(\b[a-zA-Z_]\w*(?=\s*\())/g;
+
+function getTokenType(match: RegExpMatchArray): string | null {
+  if (match[1]) return "comment";
+  if (match[2]) return "string";
+  if (match[3]) return "keyword";
+  if (match[4]) return "type";
+  if (match[5]) return "number";
+  if (match[6]) return "builtin";
+  if (match[7]) return "function";
+  return null;
+}
+
+function highlightWithPattern(text: string, pattern: RegExp): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let key = 0;
+
+  for (const match of text.matchAll(pattern)) {
+    const index = match.index ?? 0;
+    if (index > lastIndex) {
+      nodes.push(text.slice(lastIndex, index));
+    }
+
+    const tokenType = getTokenType(match);
+    const tokenText = match[0];
+    if (tokenType && TOKEN_COLORS[tokenType]) {
+      nodes.push(
+        <span key={`tok-${key++}`} style={{ color: TOKEN_COLORS[tokenType] }}>
+          {tokenText}
+        </span>
+      );
+    } else {
+      nodes.push(tokenText);
+    }
+
+    lastIndex = index + tokenText.length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes;
+}
+
+function renderCode(text: string, language?: string): ReactNode {
+  const normalized = (language ?? "").toLowerCase();
+  if (normalized === "solidity" || normalized === "sol") {
+    return highlightWithPattern(text, SOLIDITY_PATTERN);
+  }
+  if (normalized === "typescript" || normalized === "ts" || normalized === "tsx" || normalized === "javascript" || normalized === "js") {
+    return highlightWithPattern(text, TYPESCRIPT_PATTERN);
+  }
+  return text;
+}
 
 function renderText(text: string) {
   return text.split(/(@\w+)/g).map((part, i) =>
@@ -203,9 +274,59 @@ function RenderSection({ section, accent }: { section: BlogSection; accent: stri
         </div>
       );
 
-    case "cta":
+    case "code":
       return (
-        <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ margin: "1.5rem 0 2rem" }}>
+          {section.language && (
+            <div
+              style={{
+                fontFamily: "var(--font-space-mono), monospace",
+                fontSize: "0.75rem",
+                color: "#7f8c9a",
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                marginBottom: "0.5rem",
+              }}
+            >
+              {section.language}
+            </div>
+          )}
+          <pre
+            style={{
+              margin: 0,
+              padding: "1rem",
+              background: "rgba(0, 0, 0, 0.35)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              overflowX: "auto",
+            }}
+          >
+            <code
+              style={{
+                fontFamily: "var(--font-space-mono), monospace",
+                fontSize: "0.9rem",
+                lineHeight: 1.7,
+                color: "#d0d7de",
+                whiteSpace: "pre",
+              }}
+            >
+              {renderCode(section.text ?? "", section.language)}
+            </code>
+          </pre>
+        </div>
+      );
+
+    case "cta":
+      const isZama = section.variant === "zama";
+      const isCentered = section.align === "center";
+      return (
+        <div
+          style={{
+            marginTop: "3rem",
+            paddingTop: "2rem",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            textAlign: isCentered ? "center" : "left",
+          }}
+        >
           <a
             href={section.href}
             target="_blank"
@@ -215,8 +336,8 @@ function RenderSection({ section, accent }: { section: BlogSection; accent: stri
               fontSize: "1.05rem",
               textTransform: "uppercase",
               letterSpacing: "0.12em",
-              backgroundColor: "#F07060",
-              color: "#fff",
+              backgroundColor: isZama ? "#FFCC00" : "#F07060",
+              color: isZama ? "#111" : "#fff",
               padding: "16px 36px",
               textDecoration: "none",
               display: "inline-block",
@@ -236,6 +357,8 @@ function RenderSection({ section, accent }: { section: BlogSection; accent: stri
 }
 
 export default function BlogPostClient({ post }: { post: BlogPost }) {
+  const accent = getCategoryAccent(post.category, post.accent);
+
   return (
     <>
       <Navbar />
@@ -255,7 +378,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           <div
             className="absolute inset-0"
             style={{
-              background: `radial-gradient(ellipse 60% 60% at 50% 0%, ${post.accent}15 0%, transparent 70%)`,
+              background: `radial-gradient(ellipse 60% 60% at 50% 0%, ${accent}15 0%, transparent 70%)`,
             }}
           />
 
@@ -266,7 +389,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
               transition={{ duration: 0.6 }}
               style={{ marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}
             >
-              <span className="section-label" style={{ color: post.accent }}>{post.category}</span>
+              <span className="section-label" style={{ color: accent }}>{post.category}</span>
               <span className="section-label" style={{ color: "#444" }}>·</span>
               <span className="section-label" style={{ color: "#555" }}>{post.date}</span>
               <span className="section-label" style={{ color: "#444" }}>·</span>
@@ -302,7 +425,13 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
               <span className="section-label" style={{ color: "#555" }}>{post.authorHandle}</span>
               <div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginLeft: "0.5rem" }}>
                 {post.tags.map((tag) => (
-                  <span key={tag} className="tech-badge">{tag}</span>
+                  <span
+                    key={tag}
+                    className="tech-badge"
+                    style={{ color: accent, borderColor: `${accent}55` }}
+                  >
+                    {tag}
+                  </span>
                 ))}
               </div>
             </motion.div>
@@ -325,7 +454,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                   alt={post.title}
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "3px", background: post.accent }} />
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "3px", background: accent }} />
               </motion.div>
             </div>
           </div>
@@ -340,7 +469,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
             className="w-[90%] lg:w-[70%] mx-auto"
           >
             {post.content.map((section, i) => (
-              <RenderSection key={i} section={section} accent={post.accent} />
+              <RenderSection key={i} section={section} accent={accent} />
             ))}
 
             {/* Back link */}

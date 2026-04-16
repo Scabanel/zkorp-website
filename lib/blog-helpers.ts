@@ -20,7 +20,7 @@ export interface BlogPost {
 }
 
 export interface BlogSection {
-  type: "heading" | "paragraph" | "list" | "quote" | "cta" | "image" | "video" | "tweet";
+  type: "heading" | "paragraph" | "list" | "quote" | "cta" | "image" | "video" | "tweet" | "code";
   level?: 2 | 3;
   text?: string;
   items?: string[];
@@ -31,6 +31,9 @@ export interface BlogSection {
   caption?: string;
   youtubeId?: string;
   tweetId?: string;
+  language?: string;
+  variant?: "default" | "zama";
+  align?: "left" | "center";
 }
 
 export const p    = (text: string): BlogSection => ({ type: "paragraph", text });
@@ -41,4 +44,20 @@ export const list = (items: string[]): BlogSection => ({ type: "list", items });
 export const img  = (src: string, alt?: string, caption?: string): BlogSection => ({ type: "image", src, alt, caption });
 export const vid   = (youtubeId: string): BlogSection => ({ type: "video", youtubeId });
 export const tweet = (tweetId: string): BlogSection => ({ type: "tweet", tweetId });
-export const cta  = (label: string, href: string): BlogSection => ({ type: "cta", label, href });
+export const cta  = (
+  label: string,
+  href: string,
+  options?: { variant?: "default" | "zama"; align?: "left" | "center" }
+): BlogSection => ({ type: "cta", label, href, variant: options?.variant, align: options?.align });
+export const code = (text: string, language = "text"): BlogSection => ({ type: "code", text, language });
+
+const CATEGORY_ACCENTS: Record<string, string> = {
+  "fhe project": "#FFCC00",
+  "onchain gaming": "#F07060",
+  "agentic ai": "#9B8FD4",
+  "event coverage": "#9B8FD4",
+};
+
+export function getCategoryAccent(category: string, fallback: string): string {
+  return CATEGORY_ACCENTS[category.toLowerCase()] ?? fallback;
+}

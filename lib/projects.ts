@@ -167,7 +167,7 @@ export const allProjects: Project[] = [
     stack: ["Cairo", "Starknet", "Cartridge", "LootSurvivor", "AI Agents"],
     image: images.projects.hydra,
     imagePlaceholder: "Hydra - AI agent streaming platform",
-    clientColor: "#00C8B4",
+    clientColor: "#9B8FD4",
     statusBar: false,
     narrative: "ai",
   },

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { blogPosts } from "@/lib/blog-posts";
+import { getCategoryAccent } from "@/lib/blog-helpers";
 
 export default function BlogPage() {
   return (
@@ -74,6 +75,7 @@ export default function BlogPage() {
           <div className="w-[90%] lg:w-[70%] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogPosts.map((post, i) => (
+                // Keep category/tag accents in sync for each card.
                 <motion.div
                   key={post.slug}
                   initial={{ opacity: 0, y: 32 }}
@@ -98,7 +100,7 @@ export default function BlogPage() {
                         transition: "border-color 0.3s",
                       }}
                       onMouseEnter={(e) =>
-                        ((e.currentTarget as HTMLElement).style.borderColor = `${post.accent}55`)
+                        ((e.currentTarget as HTMLElement).style.borderColor = `${getCategoryAccent(post.category, post.accent)}55`)
                       }
                       onMouseLeave={(e) =>
                         ((e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)")
@@ -138,8 +140,20 @@ export default function BlogPage() {
                             </div>
                           </div>
                         )}
-                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "2px", background: post.accent }} />
-                        <div className="section-label" style={{ position: "absolute", top: "12px", right: "12px", color: "#555", fontSize: "1.1rem", background: "rgba(0,0,0,0.5)", padding: "2px 6px" }}>
+                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "2px", background: getCategoryAccent(post.category, post.accent) }} />
+                        <div
+                          className="section-label"
+                          style={{
+                            position: "absolute",
+                            top: "12px",
+                            right: "12px",
+                            color: "#f2f2f2",
+                            fontSize: "1.1rem",
+                            background: "rgba(0,0,0,0.72)",
+                            border: "1px solid rgba(255,255,255,0.14)",
+                            padding: "3px 8px",
+                          }}
+                        >
                           {post.date}
                         </div>
                       </div>
@@ -147,7 +161,7 @@ export default function BlogPage() {
                       {/* Content */}
                       <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.875rem" }}>
-                          <span className="section-label" style={{ color: post.accent, fontSize: "0.78rem" }}>{post.category}</span>
+                          <span className="section-label" style={{ color: getCategoryAccent(post.category, post.accent), fontSize: "0.78rem" }}>{post.category}</span>
                           <span className="section-label" style={{ color: "#444", fontSize: "1.1rem" }}>{post.readTime} read</span>
                         </div>
 
@@ -171,11 +185,20 @@ export default function BlogPage() {
 
                         <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginBottom: "1.25rem" }}>
                           {post.tags.map((tag) => (
-                            <span key={tag} className="tech-badge">{tag}</span>
+                            <span
+                              key={tag}
+                              className="tech-badge"
+                              style={{
+                                color: getCategoryAccent(post.category, post.accent),
+                                borderColor: `${getCategoryAccent(post.category, post.accent)}55`,
+                              }}
+                            >
+                              {tag}
+                            </span>
                           ))}
                         </div>
 
-                        <div className="section-label" style={{ color: post.accent, fontSize: "0.82rem" }}>
+                        <div className="section-label" style={{ color: getCategoryAccent(post.category, post.accent), fontSize: "0.82rem" }}>
                           Read more →
                         </div>
                       </div>
