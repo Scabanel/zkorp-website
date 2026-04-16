@@ -96,7 +96,7 @@ export default function BlogPage() {
                         display: "flex",
                         flexDirection: "column",
                         cursor: "pointer",
-                        height: "100%",
+                        height: "560px",
                         transition: "border-color 0.3s",
                       }}
                       onMouseEnter={(e) =>
@@ -179,7 +179,16 @@ export default function BlogPage() {
                           {post.title}
                         </h2>
 
-                        <p style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: "0.88rem", color: "#888", lineHeight: 1.6, flex: 1, marginBottom: "1.25rem" }}>
+                        <p
+                          style={{
+                            fontFamily: "var(--font-inter), sans-serif",
+                            fontSize: "0.88rem",
+                            color: "#888",
+                            lineHeight: 1.6,
+                            flex: 1,
+                            marginBottom: "1.25rem",
+                          }}
+                        >
                           {post.excerpt}
                         </p>
 
@@ -198,7 +207,7 @@ export default function BlogPage() {
                           ))}
                         </div>
 
-                        <div className="section-label" style={{ color: getCategoryAccent(post.category, post.accent), fontSize: "0.82rem" }}>
+                        <div className="section-label" style={{ color: getCategoryAccent(post.category, post.accent), fontSize: "0.82rem", marginTop: "auto" }}>
                           Read more →
                         </div>
                       </div>
